@@ -1,0 +1,15 @@
+<view class="about">
+	<view class="about-item">
+		<text class="about-item-title">关于我们</text>
+		<text class="about-item-content">河南信阳毛尖，产自信阳云雾山</text>
+	</view>
+	<view class="about-item">
+		<text class="about-item-title">联系地址</text>
+		<text class="about-item-content link">河南省信阳市</text>
+		<text class="about-item-content link">15839719708(微信)</text>
+	</view>
+	<view class="about-item">
+		<text class="about-item-title">当前版本</text>
+		<text class="about-item-content ">v1.0</text>
+	</view>
+</view>

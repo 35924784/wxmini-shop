@@ -1,0 +1,7 @@
+<view class="container">
+    <text class='description'>我的专属二维码，保存图片后分享到朋友圈</text>
+    <view class='view_img' >
+        <image class='img' mode="widthFix" bindtap="previewImage" src='{{qrurl}}'></image>
+        <button class="savebutton" bindtap="saveImage"> 保存 </button>
+    </view>
+</view>

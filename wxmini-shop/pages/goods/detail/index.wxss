@@ -1,0 +1,230 @@
+.goods-container {
+  height:100%;
+  overflow-y:auto;
+}
+
+.swiper-box {
+    width: 100%;
+    height: 280px;
+}
+
+.swiper-box .slide-image {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.name {
+    padding: 0 30rpx;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
+}
+.shopping-container {
+    padding: 0 30rpx;
+    display: flex;  
+    flex-direction: row;
+    margin:10px 0
+}
+
+.shopping-container .price {
+    height: 26px; 
+    color: orangered;
+}
+
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-pager {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+.goods-tab-box {
+  margin-botton:20px
+}
+
+.goods-tab-nav{
+    display: inline-block;
+    width: 50%;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #ededed;
+    box-sizing: border-box;
+    text-align: center;
+    color: #c7c7cb;
+    border:1rpx solid ;
+    border-radius:6rpx;
+}
+.goods-tab-nav.on{
+    color: #bcaa8a;
+    border-bottom: 5rpx solid #bcaa8a;
+}
+.goods-content{
+    padding: 20rpx 40rpx 20rpx 40rpx;
+}
+.goods-remark {
+  padding:10rpx 20rpx;
+}
+.detail-img {
+  padding:1px;
+  width:99.5%;
+}
+.goods-params{
+    float:left; 
+    width:45%;
+    margin:0 15rpx;
+    /*font-family: kaiti;*/
+    font-size: 30rpx
+}
+/*主容器*/
+.stepper { 
+  width: 80px; 
+  height: 26px; 
+  /*给主容器设一个边框*/
+  border: 1px solid #ccc; 
+  border-radius: 3px; 
+  margin-left:40px;
+  float:right
+} 
+  
+/*加号和减号*/
+.stepper text { 
+  width: 19px; 
+  line-height: 26px; 
+  text-align: center; 
+  float: left; 
+} 
+  
+/*数值*/
+.stepper input { 
+  width: 40px; 
+  height: 26px; 
+  float: left; 
+  margin: 0 auto; 
+  text-align: center; 
+  font-size: 12px; 
+  /*给中间的input设置左右边框即可*/
+  border-left: 1px solid #ccc; 
+  border-right: 1px solid #ccc; 
+} 
+  
+/*普通样式*/
+.stepper .normal{ 
+  color: black; 
+} 
+  
+/*禁用样式*/
+.stepper .disabled{ 
+  color: #ccc; 
+}
+
+/*禁用样式*/
+.sharebutton {
+  float: right;
+  font-weight: lighter;
+  background-color: #E0EEE0;
+  margin-right:10rpx
+}
+
+/*自定义弹窗*/
+.show-btn {
+  margin-top: 100rpx;
+  color: #22cc22;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 80%;
+  overflow: hidden;
+  position: fixed;
+  top: 40%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: 10%;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 40rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 40rpx 32rpx;
+}
+
+.modal-text {
+  display: flex;
+  background: #fff;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #1AAD19;
+  text-align: center;
+}
+
+.specs {
+  margin:10px 0 10px 0
+}
+
+.specitem {
+  text-align:center;
+  border:1px solid #a1a1a1;
+  /*padding:10px 40px; */
+  width:44%;
+  margin:0rpx 8rpx 4rpx 8rpx;
+  border-radius:15px;
+}
+
+.selecteditem {
+  background:#dddddd;
+}

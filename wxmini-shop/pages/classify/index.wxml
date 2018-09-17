@@ -1,0 +1,21 @@
+<import src="../common/list.wxml"/>
+
+<view class="classify">
+	<view class="nav_left" bindscrolltoupper="onRefresh">
+		<scroll-view scroll-y="true" style="height: {{ deviceHeight + 'px' }}">
+      		<view bindtap="changeTab" data-index="{{ index }}" data-id="{{ item.code }}" class="nav_left_item {{ activeIndex === index ? 'active' : '' }}" wx:for="{{ classifyList }}" wx:key="code">
+      			{{ item.name }}
+      		</view>
+   		 </scroll-view>
+	</view>
+	<view class="nav_right">
+		<view class="title">
+			{{ classifyList[activeIndex].name }}
+		</view>
+		<view class="content">
+			<scroll-view scroll-y="true" style="height: {{ (deviceHeight - 49) + 'px' }}" bindscrolltolower="getMoreGoods" bindscrolltoupper="onRefreshGoods">
+				<template is="list" data="{{ goods, prompt }}"/>
+			</scroll-view>
+		</view>
+	</view>
+</view>

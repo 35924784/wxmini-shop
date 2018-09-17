@@ -1,0 +1,4 @@
+text/plain txt text TXT
+# 这将 file.txt、file.text 和 file.TXT 映射到 mime 类型 "text/plain"
+text/css css CSS
+application/javascript js JS

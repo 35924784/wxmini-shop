@@ -1,0 +1,7 @@
+<view class="container">
+	<text class='description' selectable='true'>1、搜索微信号 wxid_4mshb3nnljn421 (长按可复制)，添加好友直接联系客服人员</text>
+    <view class='description'>2、保存下面图片然后扫描关注微信公众号，通过公众号来咨询问题。或者直接搜索微信公众号：信阳文玉茶叶。</view>
+    <view class='view_img' >
+        <image class='img' bindtap="previewImage" src='{{acctimg}}'></image>
+    </view>
+</view>

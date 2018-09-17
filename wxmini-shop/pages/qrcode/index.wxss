@@ -1,0 +1,24 @@
+.description {
+	text-align:center;
+	padding-left:20rpx;
+	font-size:14px;
+}
+
+.view_img {
+	height: 100%;
+	position:absolute;
+	width:100%;
+}
+
+.img {
+	position:relative;
+	width: 100%;
+	height: 90%;
+}
+
+.savebutton {
+  position: relative;
+  font-weight: lighter;
+  background-color: #F8F8F8;
+  margin-right:10rpx
+}

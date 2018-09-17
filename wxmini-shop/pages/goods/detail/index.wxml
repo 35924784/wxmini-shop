@@ -1,0 +1,82 @@
+<view class="container goods-container">
+    <view class="swiper-container">
+        <swiper class="swiper-box" indicator-dots="{{ indicatorDots }}" vertical="{{ vertical }}" autoplay="true" interval="{{ interval }}" duration="{{ duration }}" bindchange="swiperchange">
+            <block wx:for="{{ goods.frontImages }}" wx:key="">
+                <swiper-item>
+                    <image src="{{ item }}" mode="widthFix" class="slide-image" data-index="{{ index }}" bindtap="previewImage" />
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="swiper-pager">{{ current + 1 }} / {{ total }}</view>
+    </view>
+    <view class="name">{{ goods.name }} 
+        <button class="sharebutton" size="mini" open-type="share" wx:if="{{showShare}}"> 转发 </button>
+        <button class="sharebutton" size="mini"  open-type="contact" session-from="contact" > 咨询 </button>
+    </view> 
+
+    <block >
+        <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd"  wx:if="{{!goods.specs || selected<0}}">规格：【500g  <text style="color: orangered;">¥{{goods.price/100.0}}</text>】 X {{num}}</view>
+            <view class="weui-cell__bd" wx:else>规格：【{{goods.specs[selected][0]}}  <text style="color: orangered;">¥{{goods.specs[selected][2]/100.0}}</text>】 X {{num}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access" bindtap="chooseSpec">选择</view>
+        </view>
+    </block> 
+
+    <view class="goods-tab-box">   
+        <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">商品详情</view>
+        <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">产品参数</view>
+        <view  >
+            <view wx:if="{{curIndex === 0}}" class="goods-remark">
+                <text space="emsp" >{{goods.remark}}</text>
+            </view>
+            <view wx:if="{{curIndex === 0}}">
+              <image src="{{ item }}" mode="aspectFit" wx:for="{{goods.detailImages}}" class="detail-img" />
+            </view>
+            <view wx:if="{{curIndex === 1}}" class="goods-content">
+              <text class="goods-params" wx:for="{{goods.extParams}}">{{item[0]}} : {{item[1]}}   </text>
+            </view>
+        </view>
+    </view>
+    <view class="btn-plus" bindtap="addCart">
+        <view>
+            <image class="icon" src="../../../assets/images/iconfont-plus-circle.png" />
+            <text>加入购物车</text>
+        </view>
+    </view>
+</view>
+
+<!--选择规格弹窗-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showSpecModal}}"></view>
+<view class="modal-dialog" wx:if="{{showSpecModal}}" style="width:100%;margin:0;min-height: 200px">
+  <view class="specs">
+    <view class="specitem {{selected ==-1?'selecteditem':''}}" bindtap="choose"  data-index="-1" style="float:left">默认500g {{ goods.price/100.0 }}元</view>
+    <view class="specitem {{selected ==index?'selecteditem':''}}" wx:for="{{ goods.specs }}" bindtap="choose"  data-index="{{index}}" style="float:left">{{ item[0] }} {{item[2]/100.0 }}元</view>
+  </view>
+  <view class="shopping-container" style="position:absolute;bottom:80rpx;width:100%">
+    <view class="price"> 购买数量：</view>
+        <view class="stepper">       
+            <!-- 减号 -->
+            <text class="{{minusStatus}}" bindtap="bindMinus">-</text> 
+            <!-- 数值 -->
+            <input type="number" bindchange="bindManual" value="{{num}}" /> 
+            <!-- 加号 -->
+            <text class="normal" bindtap="bindPlus">+</text>
+    </view>
+  </view>
+  <view class="modal-footer" style="position:absolute;bottom:0;width:100%">
+    <view class="btn-confirm" bindtap="closeChooseSpec" style="width:100%">确认</view>
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="onCancel" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">微信登录</view>
+  <view class="modal-content">
+        <text class="modal-text">将获取你的微信公开信息用于登录认证</text>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <button class="btn-confirm" open-type="getUserInfo" bindgetuserinfo="wechatSignIn">确认</button>
+  </view>
+</view>

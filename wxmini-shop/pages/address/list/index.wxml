@@ -1,0 +1,27 @@
+<import src="../../common/prompt.wxml"/>
+
+<view class="address-list">
+    <template is="prompt" data="{{ prompt }}"/>
+    
+    <view class="scroll-list">
+        <view class="weui-panel" wx:if="{{ addrList.length > 0 }}">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text" wx:for="{{ addrList }}" wx:key="addrId">
+                    <view class="weui-media-box__desc">{{item.contactName}}   {{item.contactPhone}}</view>
+                    <view class="weui-media-box__desc">{{ item.addrDetail }}</view>
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta text-orangered" wx:if="{{ item.isDefault }}">默认地址</view>
+                        <view class="weui-media-box__info__meta" wx:if="{{ !item.isDefault }}" bindtap="setDefalutAddress" data-id="{{ item.addrId }}">设为默认</view>
+                    </view>
+                    <view class="edit" >
+                        <button type="warn" class="delete" data-addr="{{ item }}" bindtap="deleteAddr">删除</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn-plus" bindtap="toAddressAdd">
+            <image class="icon" src="../../../assets/images/iconfont-plus-circle.png" />
+            <text>新增地址</text>
+        </view>
+    </view>
+</view>

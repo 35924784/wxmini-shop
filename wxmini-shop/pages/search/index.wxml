@@ -1,0 +1,19 @@
+<import src="../common/list.wxml"/>
+
+<view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{ inputVal }}" bindinput="inputTyping" auto-focus/>
+            <view class="weui-icon-clear" bindtap="clearInput">
+                <icon type="clear" size="14"></icon>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weui-cells searchbar-result" wx:if="{{ !!inputVal && !!goods.items.length }}">
+    <view class="weui-cell weui-cell__ft">搜索到约 {{ goods.items.length }} 个结果</view>
+    <scroll-view scroll-y="true" style="height: {{ (deviceHeight - 49) + 'px' }}">
+        <template is="list" data="{{ goods, prompt }}"/>
+    </scroll-view>
+</view>

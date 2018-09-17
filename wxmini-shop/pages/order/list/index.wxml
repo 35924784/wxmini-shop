@@ -1,0 +1,43 @@
+<import src="../../common/nav.wxml"/>
+<import src="../../common/prompt.wxml"/>
+
+<template is="nav" data="{{ navList, activeIndex }}"/>
+<template is="prompt" data="{{ prompt }}"/>
+
+<view class="scroll-list">
+    <view class="weui-form-preview" wx:if="{{ !!order.total }}" wx:for="{{ order.orderList }}" wx:key="" data-id="{{ item.orderid }}">
+        <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label order_text">订单号：{{item.orderid}}</view>
+                <view class="weui-form-preview__label order_text">总价 ¥ 
+                    <text class="price">{{ item.totalPrice/100.0 }}</text>
+                </view>
+            </view>
+            <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label order_status">状态：{{statusMap[item.status]}}</view>
+                <button wx:if="{{item.status == 0}}" size="mini" style="display: inline; float:left;line-height:2.8" bindtap="toWxPay" data-orderid="{{ item.orderid }}"> 付款 </button>
+            </view>
+            <view class="weui-panel__bd">
+                <view class="weui-form-preview__item">
+                    <text class="logistic_text">收货地址：{{ item.addrinfo.contactName }} {{item.addrinfo.contactPhone }} {{ item.addrinfo.addrDetail }} </text>
+                </view>
+            </view>
+            <view class="weui-panel__bd" wx:if="{{item.logisticNumber}}">
+                <view class="weui-form-preview__item">
+                    <view class="logistic_text">发货时间：2018-12-27<text class="logistic_number">顺丰快递 {{ item.logisticNumber }}</text></view>
+                </view>
+            </view>
+            
+        </view>
+        <view class="weui-form-preview__bd ">
+            <view class="weui-form-preview__item orderitem" wx:for="{{ item.orderItemList }}" wx:key="">
+                <view class="weui-form-preview__label order_text">{{ item.goodsname }}</view>
+                <view class="weui-cell__bd">【{{item.spec=="default"?"500g":item.spec}} <text style="color: orangered;margin-left: 15rpx">  ¥{{item.price/100.0}}</text>】 X {{item.amount}}</view>
+            </view>
+        </view>
+        <!---这里的客服功能屏蔽
+        <view class="weui-form-preview__ft"> 
+            <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">联系客服</button>
+        </view>  -->
+    </view>
+</view>

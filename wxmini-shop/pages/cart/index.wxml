@@ -1,0 +1,36 @@
+<import src="../common/prompt.wxml"/>
+
+<template is="prompt" data="{{ prompt }}"/>
+
+<view class="weui-panel weui-panel_access" wx:if="{{ !!carts.items.length }}" wx:for="{{ carts.items }}" wx:key="">
+    <view class="weui-panel__hd">
+        <text class="info-meta" wx:if="{{ !item.canEdit }}" data-value="edit" bindtap="onTapEdit" data-id="{{ item.itemid }}">修改数量</text>
+        <text class="info-meta" wx:if="{{ item.canEdit }}" data-value="ok"  bindtap="onTapEdit" data-id="{{ item.itemid }}">完成</text>
+        <text class="info-meta" bindtap="del" data-id="{{ item.itemid }}">删除</text>
+    </view>
+    <view class="weui-panel__bd">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" bindtap="navigateTo" data-id="{{ item.goods.code }}">
+                <image class="weui-media-box__thumb" src="{{ item.thumb_url }}" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">{{ item.goodsname }}</view>
+                <view class="weui-media-box__desc">
+                    <text class="text-orangered">总价 : ¥ {{ (item.specDetail[2] * item.amount) / 100.0}}</text>
+                    <view class="weui-cell__bd" style="margin-top: 15rpx">规格：【{{item.specDetail[0]}} <text style="color: orangered;margin-left: 15rpx">  ¥{{item.specDetail[2]/100.0}}</text>】 X {{item.amount}}</view>
+                </view>
+                <view class="cart-count-box" wx:if="{{ item.canEdit }}">
+                    <text class="cart-numtext" space="nbsp">数量  </text>
+                    <text class="cart-count-down" wx:if="{{ item.canEdit }}" bindtap="decrease" data-id="{{item.itemid}}" data-total="{{ item.amount }}">-</text>
+                    <text class="cart-count-num">{{item.amount}}</text>
+                    <text class="cart-count-add" wx:if="{{ item.canEdit }}" bindtap="increase" data-id="{{item.itemid}}" data-total="{{ item.amount }}">+</text>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>
+
+<view class="button-sp-area" wx:if="{{ !!carts.items.length }}">
+    <button class="weui-btn" type="primary" bindtap="confirmOrder">去结算</button>
+    <button class="weui-btn" type="warn" bindtap="clear">清空</button>
+</view>

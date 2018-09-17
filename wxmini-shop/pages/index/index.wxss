@@ -1,0 +1,112 @@
+.scroll-list {
+    overflow: hidden;
+}
+
+.weui-icon-search, 
+.weui-search-bar__text {
+    vertical-align: inherit;
+}
+
+.topbar {
+    background: #fff;
+}
+
+.topbar-item {
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.topbar-item.active {
+    color: #479de6;
+}
+
+.swiper_box {
+    width: 100%;
+    height: 220px;
+}
+
+swiper-item image {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.cate-item{
+    margin-top: 14rpx;
+    height: auto;
+    overflow: hidden;
+}
+
+.cate-item .h{
+    height: 145rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cate-item .h .name{
+    display: block;
+    height: 35rpx;
+    margin-bottom: 18rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.cate-item .h .desc{
+    display: block;
+    height: 24rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.cate-item .b{
+  width: 750rpx;
+  padding: 0 6.25rpx;
+  height: auto;
+  overflow: hidden;
+}
+
+.cate-item .b .item{
+  float: left;
+  background: #fff;
+  width: 365rpx;
+  margin-bottom: 6.25rpx;
+  padding-bottom: 33.333rpx;
+  height: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cate-item .b .item-b{
+  margin-left: 6.25rpx;
+}
+
+.cate-item .item .img{
+  width: 302rpx;
+  height: 302rpx;
+}
+
+.cate-item .item .name{
+  display: block;
+  float:left;
+  width: 45%;
+  height: 40rpx;
+  text-align: center;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.cate-item .item .price{
+  display: block;
+  width: 45%;
+  float:right;
+  height: 35rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #b4282d;
+}

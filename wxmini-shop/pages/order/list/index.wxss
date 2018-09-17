@@ -1,0 +1,60 @@
+.scroll-list {
+    overflow: hidden;
+}
+
+.topbar {
+    margin-top: 0;
+    background: #fff;
+}
+
+.topbar-item {
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.topbar-item.active {
+    color: #479de6;
+}
+
+.swiper_box {
+    width: 100%;
+}
+
+swiper-item image {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.order_text {
+    font-size:0.8em;
+}
+
+.price {
+    color:red; 
+}
+
+.logistic_text {
+    font-size:0.7em;
+    float:left;
+    text-align: left;
+}
+
+.logistic_number {
+    margin-left:1em;
+    color:blue;
+}
+
+.order_status {
+    color:green;
+}
+
+.orderitem_text {
+    font-size:0.6em;
+}
+
+.orderitem {
+    line-height:1.2;
+    margin:0.3em 0 0.5em 0;
+}

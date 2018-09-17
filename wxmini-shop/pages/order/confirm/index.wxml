@@ -1,0 +1,84 @@
+<view class="address" wx:if="{{!showaddrs}}">
+    <view class="weui-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text" bindtap="showAddrList">
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{ address.contactName }} {{ address.contactPhone }}</view>
+                <view class="weui-media-box__desc">{{ address.addrDetail }}</view>
+                <view class="addr">
+                    <image class="icon" src="../../../assets/images/iconfont-addr-default.png" />
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="address" wx:if="{{showaddrs}}" style="margin-top: 20px">
+    <view class="weui-panel" wx:if="{{ addrList.length > 0 }}">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text" wx:for="{{ addrList }}" wx:key="addrId">
+                    <view class="weui-media-box__desc">{{item.contactName}}   {{item.contactPhone}}</view>
+                    <view class="weui-media-box__desc">{{ item.addrDetail }}</view>
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta text-orangered" bindtap="deleteAddr" data-addr="{{ item }}">删除</view>
+                    </view>
+                    <view >
+                        <button type="primary" class="selectAddr" data-addr="{{ item }}" bindtap="selectAddr">选择</button>
+                    </view>
+                </view>
+            </view>
+    </view>
+    <view class="btn-plus" bindtap="toAddressAdd">
+        <image class="icon" src="../../../assets/images/iconfont-plus-circle.png" />
+        <text>新增地址</text>
+    </view>
+</view>
+
+<view class="weui-form-preview" wx:if="{{!showaddrs}}">
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item" wx:for="{{ carts.items }}" wx:key="">
+            <view class="weui-form-preview__label">{{ item.goods.name }}</view>
+            <view class="weui-form-preview__value">¥ {{ (item.specDetail[2] * item.amount) / 100.0}}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">快递费</view>
+            <view class="weui-form-preview__value_in-hd">¥ {{ orderFee.shippingFee/100.0 }}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">商品费用</view>
+            <view class="weui-form-preview__value_in-hd">¥ {{ orderFee.originPrice/100.0 }}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__hd" wx:if="{{ orderFee.discountAmount > 0 }}">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">折扣优惠</view>
+            <view class="weui-form-preview__value_in-hd">- ¥ {{ orderFee.discountAmount/100.0 }}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item" wx:if="{{ userScore > 0 && orderFee.score > 0}}">
+            <view class="weui-form-preview__label">用户积分({{userScore}})</view>
+            <view class="weui-form-preview__value">本订单可用 {{orderFee.score}} 剩余 {{userScore-orderFee.score}}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__hd" wx:if="{{ userScore > 0 && orderFee.score > 0}}">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label" style="display:block">积分抵扣</view>
+            <view class="weui-form-preview__value_in-hd" style="display: inline;">- ¥ {{orderFee.score}}
+            </view>
+        </view>
+    </view>
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">实际支付</view>
+            <view class="weui-form-preview__value_in-hd">¥ {{ (orderFee.originPrice + orderFee.shippingFee - orderFee.discountAmount)/100.0 - orderFee.score }}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+        <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="addOrder">提交订单</navigator>
+    </view>
+</view>

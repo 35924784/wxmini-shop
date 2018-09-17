@@ -1,0 +1,10 @@
+<view class="weui-panel" wx:for="{{helps}}">
+    <view class="weui-panel__hd">
+    	<text class="title">{{ item.title }}</text>
+    </view>
+    <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+            <view class="content">{{ item.content }}</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,16 @@
+.description {
+	height: 100%;
+	font-size:15px;
+	padding-left:15px;
+}
+
+.view_img {
+	height: 100%;
+}
+
+.img {
+	position:absolute;
+	left:10px;
+	right:10px;
+	width: 90%;
+}

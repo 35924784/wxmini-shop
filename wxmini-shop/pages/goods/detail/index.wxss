@@ -82,7 +82,7 @@
 }
 .detail-img {
   padding:1px;
-  width:99.5%;
+  width:100%;
 }
 .goods-params{
     float:left; 

@@ -56,8 +56,7 @@ public class ThumbnailService{
             BufferedImage img = ImageIO.read(bais);
 
             //如果图片不是很大就直接返回算了
-            if (img.getWidth() <= 400 || img.getHeight() <= 300 
-                    || theIamge.getFileData().length <= 250 * 1024)
+            if (theIamge.getFileData().length <= 800 * 1024)
             {
                 LOG.error("return original image.");
                 thumbnailCache.put(fileid,theIamge.getFileData());
@@ -65,7 +64,7 @@ public class ThumbnailService{
             }
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            Thumbnails.of(img).size(400, 300).outputFormat("jpg").toOutputStream(baos);
+            Thumbnails.of(img).size(800, 600).outputFormat("jpg").toOutputStream(baos);
             byte[] bytes = baos.toByteArray();
 
             thumbnailCache.put(fileid,bytes);

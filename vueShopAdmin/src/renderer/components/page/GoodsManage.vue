@@ -5,6 +5,28 @@
               <el-breadcrumb-item><i class="el-icon-menu"></i> 商品</el-breadcrumb-item>
           </el-breadcrumb>
     </div>
+    <div >
+            <li>
+                <div style="width:100%">
+                    <span style="width:150px;margin-right:8px">分类:&nbsp;&nbsp;&nbsp; </span>
+                    <el-select v-model="s_classify" clearable placeholder="">
+                        <el-option v-for="item in classifyList" :key="item.code" :label="item.name" :value="item.code">
+                        </el-option>
+                    </el-select>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="demonstration" style="width:150px;margin-right:8px">名称:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <el-input v-model="s_name" placeholder="请输入商品名称" style="width:150px;margin-right:8px"></el-input>
+                </div>
+            </li>
+            <li>
+                <el-button type="info" icon="el-icon-search" @click="searchGoods()">查询</el-button>
+            </li>
+            <br>
+            <span style="border:0.2px solid #C0C0C0; width:100%;float:left;margin-bottom: 10px"></span>
+        </div>
     <el-button type="primary" icon="el-icon-circle-plus" style="margin-bottom: 8px" @click="newGoods()">新增商品</el-button>
     <el-table :data="tableData" stripe border style="width: 100%">
       <el-table-column prop="name" label="商品名称" min-width="10px" > </el-table-column>
@@ -164,6 +186,8 @@ export default {
       curPage:1,
       totalNum:0,
       classifyList:[],
+      s_classify:"",
+      s_name:"",
       tableData: [
         {
           code: 'xinyanghong',
@@ -200,7 +224,7 @@ export default {
       fileList: [],
       detailimgList:[],
       extendData: {},
-      extParams:{},
+      extParams:[],
       addKey:"",
       addValue:"",
       sortValue:"",
@@ -274,6 +298,34 @@ export default {
         })
 
     },
+    searchGoods (pageSize,curPage) {
+      if(!this.s_name && !this.s_classify){
+        this.getGoods(pageSize,curPage)
+        return;
+      }
+
+      pageSize = pageSize == null ? 10: pageSize
+      curPage = curPage == null ? 1: curPage
+
+      var self = this
+      var path = "/goods/search"
+      if(this.s_classify)
+      {
+        path = "/goods/byclassify"
+      }
+      axios.get(path,{ params: { "pageSize": pageSize,"curPage":curPage,"classify":this.s_classify,"keyword":this.s_name } })
+        .then(function (response) {
+          console.log(response)
+          var data = response.data
+          self.tableData = data.retParams.goodsList
+          self.curPage = curPage
+          self.totalNum = data.retParams.totalNum
+
+        }).catch(function (error) {
+          self.$message({ message: error, type: 'error' })
+        })
+
+    },
     changeGoodsStatus (goods) {
       if (goods.status == 'R') {
         goods.status = 'D'
@@ -323,7 +375,7 @@ export default {
       this.form = {createDate: new Date().getTime(), status: 'D'}
       this.fileList = []
       this.detailimgList = []
-      this.extParams = {}
+      this.extParams = []
       this.editDialogVisible = true
     },
     submitGoods () {
@@ -506,7 +558,7 @@ export default {
     },
     addextParams(){
       if(this.extParams == null){
-        this.extParams = {}
+        this.extParams = []
       }
       this.extParams.push([this.addKey,this.addValue,this.sortValue])
       this.addKey = "",
@@ -555,6 +607,7 @@ export default {
 </script>
 
 <style scoped>
+li{ float:left; list-style:none;width: 30%;margin: 5px} 
 .release {
   height: 18px;
   width: 20px;

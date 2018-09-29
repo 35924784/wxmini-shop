@@ -30,7 +30,7 @@
                 <text space="emsp" >{{goods.remark}}</text>
             </view>
             <view wx:if="{{curIndex === 0}}">
-              <image src="{{ item }}" mode="aspectFit" wx:for="{{goods.detailImages}}" class="detail-img" />
+              <image src="{{ item }}" mode="widthFix" wx:for="{{goods.detailImages}}" class="detail-img" />
             </view>
             <view wx:if="{{curIndex === 1}}" class="goods-content">
               <text class="goods-params" wx:for="{{goods.extParams}}">{{item[0]}} : {{item[1]}}   </text>

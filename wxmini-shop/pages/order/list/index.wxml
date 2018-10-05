@@ -16,6 +16,7 @@
             <view class="weui-form-preview__item">
                 <view class="weui-form-preview__label order_status">状态：{{statusMap[item.status]}}</view>
                 <button wx:if="{{item.status == 0}}" size="mini" style="display: inline; float:left;line-height:2.8" bindtap="toWxPay" data-orderid="{{ item.orderid }}"> 付款 </button>
+                <button wx:if="{{item.status == 0}}" size="mini" style="display: inline; float:left;line-height:2.8; margin-left:5px" bindtap="toCancel" data-orderid="{{ item.orderid }}"> 取消订单 </button>
             </view>
             <view class="weui-panel__bd">
                 <view class="weui-form-preview__item">
@@ -24,7 +25,12 @@
             </view>
             <view class="weui-panel__bd" wx:if="{{item.logisticNumber}}">
                 <view class="weui-form-preview__item">
-                    <view class="logistic_text">发货时间：2018-12-27<text class="logistic_number">顺丰快递 {{ item.logisticNumber }}</text></view>
+                    <view class="logistic_text">发货时间：2018-12-27<text class="logistic_number">{{item.logisticCompany}} {{ item.logisticNumber }}</text></view>
+                </view>
+            </view>
+            <view class="weui-panel__bd" wx:if="{{item.remark}}">
+                <view class="weui-form-preview__item">
+                    <text class="logistic_text">留言：{{ item.remark }} </text>
                 </view>
             </view>
             

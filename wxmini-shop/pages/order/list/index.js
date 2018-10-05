@@ -176,5 +176,16 @@ Page({
                 this.getList()
             })
         })
-    }
+    },
+    toCancel(e) {
+        const orderid = e.currentTarget.dataset.orderid
+        App.HttpService.toCancelOrder(orderid)
+        .then(res => {
+            const data = res.data
+            console.log(data)
+            if (data.retCode == '0') {
+                this.getList()
+            }
+        })
+    },
 })

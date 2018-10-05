@@ -27,6 +27,7 @@
             <br>
             <span style="border:0.2px solid #C0C0C0; width:100%;float:left;margin-bottom: 10px"></span>
         </div>
+        <p >
     <el-button type="primary" icon="el-icon-circle-plus" style="margin-bottom: 8px" @click="newGoods()">新增商品</el-button>
     <el-table :data="tableData" stripe border style="width: 100%">
       <el-table-column prop="name" label="商品名称" min-width="10px" > </el-table-column>
@@ -474,7 +475,7 @@ export default {
           })
       
       } else {   //直接删除
-          axios.delete('/image/' + fileid).then(function (response) {
+          axios.delete('/image/admin/' + fileid).then(function (response) {
               console.log(response)
           }).catch(function (error) {
               console.log(error)
@@ -526,7 +527,7 @@ export default {
           })
       
       } else {   //直接删除
-          axios.delete('/image/' + fileid).then(function (response) {
+          axios.delete('/image/admin/' + fileid).then(function (response) {
               console.log(response)
           }).catch(function (error) {
               console.log(error)

@@ -78,6 +78,13 @@
             <view class="weui-form-preview__value_in-hd">¥ {{ (orderFee.originPrice + orderFee.shippingFee - orderFee.discountAmount)/100.0 - orderFee.score }}</view>
         </view>
     </view>
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__value_in-hd">
+                <textarea maxlength="40" rows="2" placeholder="买家留言" bindinput="getRemark" class="remark"></textarea>
+            </view>
+        </view>
+    </view>
     <view class="weui-form-preview__ft">
         <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="addOrder">提交订单</navigator>
     </view>

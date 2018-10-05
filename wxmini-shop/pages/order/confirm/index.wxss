@@ -49,3 +49,14 @@
 .weui-form-preview__hd{
 	padding:5px 15px;
 }
+
+.remark{
+	border: 1px #C0C0C0 solid;
+  	margin: auto;
+  	width: 98%;
+  	height: 2.4em;
+  	margin-top:5px;
+  	padding: 3px;
+  	font-size: 0.7em;
+  	line-height: 0.7em;
+}

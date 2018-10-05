@@ -228,8 +228,8 @@ class HttpService extends WxRequest {
 		})
 	}
 
-	putOrder(id, params) {
-		return this.putRequest(`${this.$$path.order}/${id}`, {
+	toCancelOrder(id, params) {
+		return this.postRequest(`${this.$$path.order}/cancel/${id}`, {
 			data: params,
 		})
 	}

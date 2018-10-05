@@ -28,9 +28,15 @@ for (item in order.getOrderItemList()) {
     LOG.info("fee:" + fee);  
 }
 
+orderfee.setDiscountAmount(orderfee.getOriginPrice() - fee)
+
 //根据打折后的费用  计算可用积分
 def userScore = userext.getScore()
 orderfee.setScore(0)   //初始设置可用积分为0
+if(orderfee.getOriginPrice() <= 3000)   //如果费用小于3000分，不使用积分
+{
+    return
+}
 
 // 0-100之间5个积分 100-200之间10个积分 200-300之间15个积分
 def scoreMap=[100:5,200:15,300:30,400:40,500:55] 
@@ -48,4 +54,3 @@ if(userScore <= maxScore){
     orderfee.setScore(maxScore)
 }
 
-orderfee.setDiscountAmount(orderfee.getOriginPrice() - fee)

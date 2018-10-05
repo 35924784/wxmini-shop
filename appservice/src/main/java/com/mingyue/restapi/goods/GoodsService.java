@@ -199,7 +199,7 @@ public class GoodsService {
 			LOG.error(e.getMessage());
 		}
         //根据名称进行模糊查询       
-        Pattern pattern = Pattern.compile("^" + keyword + ".*$", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile(keyword + ".*$", Pattern.CASE_INSENSITIVE);
         // 根据name like keyword%查询
         FindIterable<Goods> findIterable = collection.find(regex("name",pattern)).limit(20);
         LOG.info(" select * from user where name like " + keyword);

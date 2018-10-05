@@ -5,7 +5,8 @@ Page({
         showaddrs: false,    //是否展示地址列表供选择
         carts: {},
         address: null,
-        addrList:[]
+        addrList:[],
+        remark:''
     },
     onLoad(option) {
         console.log("onLoad") 
@@ -179,6 +180,10 @@ Page({
             }
         })
     },
+    getRemark(e) {
+        console.log(e)
+        this.data.remark = e.detail.value;
+    },
     addOrder() {
         console.log(this.data.address)
 
@@ -188,7 +193,8 @@ Page({
 
         const params = {
             addrinfo: this.data.address,
-            orderid: this.data.orderFee.orderid
+            orderid: this.data.orderFee.orderid,
+            remark: this.data.remark
         }
 
         console.log(params)

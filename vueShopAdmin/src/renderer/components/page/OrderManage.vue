@@ -60,8 +60,11 @@
                             <el-button @click="checkFeeDetail(props.row.orderid)" type="primary" size="mini">费用详情</el-button>
                             
                         </el-form-item>
-                        <el-form-item label="用户信息:" style="width:100%;margin-bottom:0">
+                        <el-form-item label="用户信息:" style="width:46%;margin-bottom:0">
                             <a href="#" @click="checkUserInfo(props.row.userid)"> {{props.row.userid}}</a>
+                        </el-form-item>
+                        <el-form-item label="买家留言:" style="width:46%;margin-bottom:0">
+                           <span style="color:blue;margin-right: 20px">{{props.row.remark}}</span>
                         </el-form-item>
                         <el-form-item label="物流信息:" style="width:100%;margin-bottom:0">
                             <span> {{props.row.logisticCompany}}</span>

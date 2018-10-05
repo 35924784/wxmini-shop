@@ -55,7 +55,7 @@
 }
 
 .goods-tab-box {
-  margin-botton:20px
+  margin-bottom:18px
 }
 
 .goods-tab-nav{

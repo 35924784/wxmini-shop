@@ -231,7 +231,7 @@ public class OrderService {
         return new ReturnMessage();
     }
 
-    //取消订单 状态更新为9
+    // 取消订单 状态更新为9
     @POST
     @Path("/cancel/{orderid}")
     public ReturnMessage cancelOrder(@CookieParam("my_session") String sessionid,
@@ -241,11 +241,21 @@ public class OrderService {
             return new ReturnMessage("901", "订单号为空");
         }
 
+        User userinfo = UserService.getUserInfoBySession(sessionid);
+
+        final MongoCollection<OrderFee> feecollection = MongoDBUtil.getDataBase().getCollection("orderfee",
+                OrderFee.class);
+        OrderFee orderfee = feecollection.find(eq("orderid", orderid)).first();
+
         Document update = new Document();
         update.put("status", "9");
         update.put("statusDate", new Date());
 
         collection.updateOne(eq("orderid", orderid), new Document("$set", update));
+
+        if (orderfee.getScore() > 0) {
+            UserExtService.changeScore(userinfo.getUserid(), orderfee.getScore());
+        }
         return new ReturnMessage();
     }
 
